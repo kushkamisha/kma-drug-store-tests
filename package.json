@@ -1,0 +1,19 @@
+{
+  "name": "kma-drug-store-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/kushkamisha/kma-drug-store-tests.git",
+  "author": "Misha Kushka <kushka.misha@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "npx mocha test/**/*.js",
+    "lint": "npx eslint ."
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "mocha": "^8.3.2",
+    "prettier": "^2.2.1"
+  }
+}
