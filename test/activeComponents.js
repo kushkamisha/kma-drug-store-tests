@@ -6,7 +6,7 @@ const apiUrl = 'https://kmadrugstore.herokuapp.com/api/v1';
 const api = axios.create({ baseURL: apiUrl });
 const url = '/active-components';
 
-describe.only(url, () => {
+describe(url, () => {
   it('should get a list of active components', () => api.get(url)
     .then(({ data }) => expect(Array.isArray(data)).to.equal(true)));
 
