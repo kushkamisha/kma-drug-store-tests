@@ -5,30 +5,22 @@ const { expect } = chai;
 const apiUrl = 'https://kmadrugstore.herokuapp.com/api/v1';
 const api = axios.create({ baseURL: apiUrl });
 
-describe.only('/goods/{id}', () => {
-  it('should get a good', () => api.get('/goods/1')
-    .then(({ data }) => {
-      expect(data).to.have.keys(
-        'activeComponents',
-        'category',
-        'country',
-        'description',
-        'form',
-        'manufacturer',
-        'prescriptionNeeded',
-        'shelfLife',
-        'id',
-        'name',
-        'price',
-        'numAvailable',
-        'numInPack',
-        'dose',
-        'photo',
-      );
-    }));
+describe.only('/goods', () => {
+  it('should get a list of goods', () => api({
+    url: '/goods',
+    params: {
+      page: 1,
+      'page-size': 3,
+    },
+  })
+    .then(({ data }) => expect(data.goods.length).to.equal(3)));
 
-  it('should get a good', () => axios.get('/goods/9999999')
-    .catch((err) => {
-      expect(err.code).to.equal('ECONNREFUSED');
-    }));
+  it('should get no goods on a huge page number', () => api({
+    url: '/goods',
+    params: {
+      page: 99999,
+      'page-size': 3,
+    },
+  })
+    .then(({ data }) => expect(data.goods.length).to.equal(0)));
 });
