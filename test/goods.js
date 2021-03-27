@@ -5,7 +5,7 @@ const { expect } = chai;
 const apiUrl = 'https://kmadrugstore.herokuapp.com/api/v1';
 const api = axios.create({ baseURL: apiUrl });
 
-describe.only('/goods', () => {
+describe('/goods', () => {
   it('should get a list of goods', () => api({
     url: '/goods',
     params: {
